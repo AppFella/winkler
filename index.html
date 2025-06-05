@@ -82,22 +82,48 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      justify-content: center;
+      background: #000;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
       z-index: 999;
+      overflow-y: auto;
     }
     .modal.active {
       display: flex;
     }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      width: 100%;
+    }
+    .modal-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+    .modal-header .name {
+      font-weight: bold;
+    }
     .modal-content {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 100%;
+      max-height: auto;
     }
     .modal-content img, .modal-content video {
       max-width: 100%;
-      max-height: 100%;
+      height: auto;
       display: block;
+    }
+    .modal-footer {
+      padding: 1rem;
+      width: 100%;
+    }
+    .modal-footer p {
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
   </style>
 </head>
@@ -115,36 +141,48 @@
         Garagentore · Fenster · Türen · Malerbetrieb<br>
         Wir machen Ihr Zuhause schöner – innen wie außen.<br>
         Kontakt: info@gta-winkler.de
-      </div>
-    </div>
-  </header>
-
-  <div class="highlight-bar">
+      <<\/div>
+  <\/div>
+<\/header>
+<div class="highlight-bar">
+  <div class="highlight">
+    <img src="https://via.placeholder.com/150" alt="Highlight">
+    <span>Kurz vor Kunst</span>
+  </div>
+  <div class="highlight">
+    <img src="https://via.placeholder.com/150" alt="Highlight">
+    <span>Vorher Nachher</span>
+  </div>
+  
     <div class="highlight">
       <img src="https://via.placeholder.com/150" alt="Highlight">
-      <span>Projekte</span>
+      <span>Gegen jeden Klecks</span>
     </div>
     <div class="highlight">
       <img src="https://via.placeholder.com/150" alt="Highlight">
-      <span>Farben</span>
+      <span>Warm Up</span>
     </div>
     <div class="highlight">
       <img src="https://via.placeholder.com/150" alt="Highlight">
-      <span>Montage</span>
+      <span>Wir finden einen Weg</span>
     </div>
   </div>
 
   <div class="grid">
+    <img src="A2486976-F1F4-4764-A401-CC2AA6309EA0.jpeg" onclick="openModal(this.src)">
     <img src="https://via.placeholder.com/300" onclick="openModal(this.src)">
     <img src="https://via.placeholder.com/300" onclick="openModal(this.src)">
-    <img src="https://via.placeholder.com/300" onclick="openModal(this.src)">
-    <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted onclick="openModal(this.src)" poster="https://via.placeholder.com/300"></video>
-    <img src="https://via.placeholder.com/300" onclick="openModal(this.src)">
-    <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted onclick="openModal(this.src)" poster="https://via.placeholder.com/300"></video>
   </div>
 
-  <div class="modal" id="modal" onclick="closeModal()">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <img src="06CB6465-D77B-4453-9E65-E63B151A09A3.jpeg">
+      <div class="name">gta_winkler</div>
+    </div>
     <div class="modal-content" id="modal-content"></div>
+    <div class="modal-footer">
+      <p>Serving Qualität und klare Meinungen. 🛠️🎨🚪</p>
+    </div>
   </div>
 
   <script>
@@ -160,6 +198,12 @@
     function closeModal() {
       document.getElementById("modal").classList.remove("active");
     }
+
+    document.getElementById("modal").addEventListener("click", function(e) {
+      if (e.target.id === "modal") {
+        closeModal();
+      }
+    });
   </script>
 </body>
 </html>
